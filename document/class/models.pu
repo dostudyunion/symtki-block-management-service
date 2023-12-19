@@ -1,0 +1,47 @@
+@startuml blockModel
+
+abstract class Block << abstract >> {
+    #blockId: String
+    #blockType: BlockType
+    
+    {abstract} +toString(): String
+}
+
+class HeadingBlock {
+    -headingLevel: Integer
+    -value: String
+
+    +toString(): String
+}
+
+class ParagraphBlock {
+    -value: String
+
+    +toString(): String
+}
+
+class ImageBlock {
+    -imageUrl: String
+    -align: ImageAlignment
+
+    +toString(): String
+}
+
+enum BlockType {
+    HEADING
+    PARAGRAPH
+    IMAGE
+}
+
+enum ImageAlignment {
+    LEFT
+    CENTER
+    RIGHT
+}
+
+
+Block <|-- HeadingBlock
+Block <|-- ParagraphBlock
+Block <|-- ImageBlock
+
+@enduml
